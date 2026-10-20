@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102a43"><title>هوشی | دستیار ترید و درآمد</title>
+<style>
+:root{--navy:#102a43;--teal:#0f766e;--bg:#f3f7fa;--card:#fff;--text:#172b4d;--muted:#62748a;--line:#dce5ed;--orange:#b45309;--red:#b42318;--green:#067647}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.7}.top{background:linear-gradient(135deg,#102a43,#0f766e);color:white;padding:25px 18px 22px}.top h1{margin:0;font-size:26px}.top p{margin:6px 0 0;color:#e0f2f1;font-size:14px}.wrap{max-width:760px;margin:auto;padding:14px}.tabs{display:flex;gap:8px;margin:0 0 14px}.tabs button{flex:1;border:1px solid var(--line);background:white;padding:11px 7px;border-radius:12px;font-weight:bold;color:var(--text)}.tabs button.active{background:var(--navy);color:white;border-color:var(--navy)}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:13px;box-shadow:0 3px 12px #102a4308}.card h2{font-size:18px;margin:0 0 10px}.muted{color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}.field input,.field select,.field textarea{width:100%;border:1px solid #cbd5e1;border-radius:10px;padding:11px;font:inherit;background:#fff;color:var(--text)}.field textarea{min-height:85px;resize:vertical}.btn{border:0;border-radius:11px;padding:12px 15px;background:var(--teal);color:white;font:inherit;font-weight:bold;width:100%;margin-top:11px}.btn.secondary{background:#e6f4f1;color:#115e59;border:1px solid #b7e4dc}.result{background:#f0fdfa;border:1px solid #b7e4dc;border-radius:12px;padding:12px;margin-top:12px}.result strong{font-size:17px}.warn{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:12px;padding:11px;font-size:13px}.danger{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}.good{color:var(--green)}.bad{color:var(--red)}.hidden{display:none}.idea{border-top:1px solid var(--line);padding:10px 0}.idea:first-of-type{border-top:0}.small{font-size:12px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:12px 8px 24px}ul{padding-right:20px}.chip{display:inline-block;background:#e8eef5;border-radius:99px;padding:2px 9px;font-size:12px;margin-left:4px}@media(max-width:440px){.grid{grid-template-columns:1fr}.top{padding-top:20px}}
+</style>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+
+</head>
+<body>
+<header class="top"><h1>🤖 هوشی</h1><p>دستیار شخصی ترید و ایده‌های درآمدی — نسخه آزمایشی برای گوشی</p></header>
+<main class="wrap">
+<div class="tabs"><button class="active" data-tab="trade">تحلیل معامله</button><button data-tab="journal">دفتر معاملات</button><button data-tab="income">درآمدزایی</button></div>
+<section id="trade" class="panel">
+<div class="card"><h2>📊 محاسبه‌گر معامله</h2><p class="muted">قیمت‌ها را خودت از بازار وارد کن. این نسخه هنوز قیمت زنده از تبدیل دریافت نمی‌کند و سفارش ثبت نمی‌کند.</p>
+<div class="grid">
+<div class="field"><label for="coin">نماد رمزارز</label><input id="coin" value="BTC/USDT" placeholder="مثلاً BTC/USDT"></div>
+<div class="field"><label for="side">جهت معامله</label><select id="side"><option value="long">خرید (Spot)</option><option value="short">فروش استقراضی (فقط محاسبه)</option></select></div>
+<div class="field"><label for="entry">قیمت ورود (دلار)</label><input id="entry" type="number" step="any" placeholder="مثلاً 65000"></div>
+<div class="field"><label for="stop">حد ضرر (دلار)</label><input id="stop" type="number" step="any" placeholder="مثلاً 63000"></div>
+<div class="field"><label for="target">هدف قیمت (دلار)</label><input id="target" type="number" step="any" placeholder="مثلاً 69000"></div>
+<div class="field"><label for="amount">مبلغ کل معامله (دلار)</label><input id="amount" type="number" step="any" value="20"></div>
+<div class="field"><label for="fee">کارمزد هر سمت (%)</label><input id="fee" type="number" step="any" value="0.25"></div>
+<div class="field"><label for="riskcap">حداکثر زیان مجاز (دلار)</label><input id="riskcap" type="number" step="any" value="1"></div>
+</div><button class="btn" id="calc">محاسبه ریسک و سود احتمالی</button><div id="out" class="result hidden" aria-live="polite"></div>
+</div>
+<div class="warn"><b>قانون هوشی:</b> این محاسبه پیش‌بینی قیمت نیست. با سرمایه ۲۰ دلاری، کارمزد و نوسان می‌توانند بخش بزرگی از سود را از بین ببرند. تا وقتی روش را آزمایش نکرده‌ای، اهرم و فیوچرز را کنار بگذار.</div>
+</section>
+<section id="journal" class="panel hidden">
+<div class="card"><h2>🗒️ دفتر ثبت معاملات</h2><p class="muted">یادداشت‌ها روی همین مرورگر گوشی ذخیره می‌شوند؛ پاک کردن داده‌های مرورگر ممکن است آن‌ها را حذف کند.</p>
+<div class="field"><label for="jdate">تاریخ</label><input id="jdate" type="date"></div><div class="field"><label for="jcoin">نماد</label><input id="jcoin" placeholder="مثلاً ETH/USDT"></div><div class="grid"><div class="field"><label for="jentry">ورود</label><input id="jentry" type="number" step="any"></div><div class="field"><label for="jexit">خروج</label><input id="jexit" type="number" step="any"></div><div class="field"><label for="jamount">مبلغ معامله ($)</label><input id="jamount" type="number" step="any" value="20"></div><div class="field"><label for="jfees">مجموع کارمزد ($)</label><input id="jfees" type="number" step="any" value="0"></div></div><div class="field"><label for="jnote">دلیل ورود / نتیجه / احساسات</label><textarea id="jnote" placeholder="چرا وارد شدی؟ آیا طبق برنامه عمل کردی؟"></textarea></div><button class="btn" id="saveTrade">ذخیره معامله</button><div id="journalList"></div></div>
+</section>
+<section id="income" class="panel hidden">
+<div class="card"><h2>💡 مسیرهای درآمدزایی کم‌هزینه</h2><p class="muted">هوشی فعلاً برنامه‌ریز و دستیار است؛ این ایده‌ها درآمد تضمینی نیستند. قبل از پرداخت برای هر سرویس یا دوره، تقاضای واقعی را بررسی کن.</p>
+<div class="idea"><b>۱. تولید محتوای محصول برای فروشگاه‌ها</b><p class="muted">با نمونه‌کار رایگان یا کم‌هزینه شروع کن: توضیح محصول، کپشن، پاسخ پرسش‌های متداول و دسته‌بندی کالاها. هدف اول گرفتن یک مشتری آزمایشی است.</p></div>
+<div class="idea"><b>۲. ساخت صفحه ساده معرفی کسب‌وکار</b><p class="muted">یک نمونه صفحه برای مغازه یا خدمات محلی بساز؛ قبل از فروش، روی گوشی تستش کن و قیمت و دامنه/میزبانی را شفاف اعلام کن.</p></div>
+<div class="idea"><b>۳. تحقیق محصول برای فروش آنلاین</b><p class="muted">سه محصول مصرفی را با قیمت خرید، قیمت رقبا، هزینه ارسال و حاشیه سود مقایسه کن؛ تا پیش از تأیید تقاضا موجودی عمده نخر.</p></div>
+<div class="warn">پیشنهاد شروع: فعلاً ۲۰ دلار را خرج ابزارهای پولی نکن. اول یک نمونه‌کار بساز و بازخورد بگیر؛ برای ترید هم فقط از داده‌های قابل بررسی استفاده کن.</div>
+</div>
+<div class="card"><h2>🎯 برنامه هفتگی</h2><ul><li>روز ۱: ثبت موجودی و بررسی کارمزدهای واقعی صرافی.</li><li>روز ۲ تا ۴: ثبت سیگنال‌های آزمایشی بدون خرید واقعی.</li><li>روز ۵: بررسی نتیجه و کارمزد فرضی.</li><li>روز ۶ و ۷: ساخت یک نمونه‌کار درآمدی و ارائه به مشتری احتمالی.</li></ul><button class="btn secondary" id="copyPlan">نمایش متن برنامه برای کپی</button><textarea id="planText" class="hidden" readonly>برنامه هوشی: ۱) سرمایه واقعی را حفظ کن. ۲) معاملات را اول آزمایشی ثبت کن. ۳) همه کارمزدها را حساب کن. ۴) یک نمونه‌کار درآمدی بساز. ۵) قبل از خرج پول، تقاضای واقعی را بسنج.</textarea></div>
+</section>
+<div class="footer">نسخه ۰٫۱ • مستقل از حساب صرافی • بدون قیمت زنده، بدون اتصال API و بدون اجرای سفارش</div>
+</main>
+<script>
+const tabs=document.querySelectorAll('[data-tab]');tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('hidden',p.id!==b.dataset.tab));}));
+const n=id=>Number(document.getElementById(id).value);const fmt=x=>Number.isFinite(x)?x.toLocaleString('en-US',{maximumFractionDigits:4}):'—';
+document.getElementById('calc').addEventListener('click',()=>{let entry=n('entry'),stop=n('stop'),target=n('target'),amount=n('amount'),fee=n('fee')/100,riskcap=n('riskcap'),side=document.getElementById('side').value;let out=document.getElementById('out');out.classList.remove('hidden');if(!(entry>0&&stop>0&&target>0&&amount>0)|| (side==='long'?(stop>=entry||target<=entry):(stop<=entry||target>=entry))){out.innerHTML='<span class="bad"><b>اعداد را بررسی کن.</b></span><p class="muted">برای خرید: حد ضرر باید پایین‌تر از ورود و هدف بالاتر از ورود باشد.</p>';return;}let stopPct=Math.abs(entry-stop)/entry,targetPct=Math.abs(target-entry)/entry;let grossLoss=amount*stopPct,grossGain=amount*targetPct,fees=amount*fee+amount*(1+(side==='long'?targetPct:-targetPct))*fee;let netLoss=grossLoss+fees,netGain=grossGain-fees,rr=netGain>0?netGain/netLoss:0;let allowed=riskcap/(stopPct+2*fee);out.innerHTML=`<b>${document.getElementById('coin').value||'دارایی'}</b><div>زیان تقریبی با حد ضرر و کارمزد: <strong class="bad">$${fmt(netLoss)}</strong></div><div>سود تقریبی تا هدف پس از کارمزد: <strong class="${netGain>=0?'good':'bad'}">$${fmt(netGain)}</strong></div><div>نسبت سود به زیان تقریبی: <strong>${fmt(rr)} به ۱</strong></div><div>مبلغ معامله تقریبی برای محدود کردن زیان به $${fmt(riskcap)}: <strong>$${fmt(Math.max(0,allowed))}</strong></div><p class="muted small">مدل ساده است؛ لغزش قیمت، اسپرد، مالیات و شرایط واقعی سفارش را پوشش نمی‌دهد. اعداد کارمزد را با تعرفه واقعی صرافی جایگزین کن.</p>`;});
+let trades=JSON.parse(localStorage.getItem('hoshiTrades')||'[]');function render(){let box=document.getElementById('journalList');if(!trades.length){box.innerHTML='<p class="muted">هنوز معامله‌ای ثبت نشده است.</p>';return;}box.innerHTML='<h3>سوابق</h3>'+trades.map((t,i)=>{let pnl=(t.exit-t.entry)/t.entry*t.amount-t.fees;return `<div class="idea"><b>${t.coin||'بدون نماد'} — ${t.date||''}</b><div>نتیجه تخمینی: <strong class="${pnl>=0?'good':'bad'}">$${fmt(pnl)}</strong></div><div class="muted small">ورود ${fmt(t.entry)} | خروج ${fmt(t.exit)} | مبلغ $${fmt(t.amount)} | کارمزد $${fmt(t.fees)}</div><div>${(t.note||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}</div><button class="btn secondary" onclick="removeTrade(${i})">حذف</button></div>`}).join('');}window.removeTrade=i=>{trades.splice(i,1);localStorage.setItem('hoshiTrades',JSON.stringify(trades));render()};document.getElementById('saveTrade').addEventListener('click',()=>{let t={date:document.getElementById('jdate').value,coin:document.getElementById('jcoin').value,entry:n('jentry'),exit:n('jexit'),amount:n('jamount'),fees:n('jfees'),note:document.getElementById('jnote').value};if(!(t.entry>0&&t.exit>0&&t.amount>0)){alert('ورود، خروج و مبلغ را وارد کن.');return;}trades.unshift(t);localStorage.setItem('hoshiTrades',JSON.stringify(trades));render();document.getElementById('jnote').value='';});document.getElementById('jdate').value=new Date().toISOString().slice(0,10);render();document.getElementById('copyPlan').addEventListener('click',async()=>{let el=document.getElementById('planText');el.classList.remove('hidden');el.select();try{await navigator.clipboard.writeText(el.value)}catch(e){};});
+</script>
+<script>
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+ window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {}));
+}
+</script>
+
+</body></html>
